@@ -1,25 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import EstimatesChart from "./components/EstimatesChart";
+import Form from "./components/Form";
+import { ElectricityUnitType } from "./types/ElectricityEstimate";
+import Estimate from "./types/Estimate";
+import { createEstimate, getEstimates } from "./utils/backendService";
+import { COUNTRIES } from "./utils/constants";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState<Estimate[]>([]);
+
+  const fetchEstimates = async () => {
+    const data = await getEstimates();
+    setData(data);
+  };
+
+  useEffect(() => {
+    fetchEstimates();
+  }, []);
+
+  const handleSubmit = async (
+    country: string,
+    electricityUnit: ElectricityUnitType,
+    usage: string
+  ) => {
+    setIsLoading(true);
+
+    await createEstimate({
+      type: "electricity",
+      country,
+      electricity_unit: electricityUnit,
+      electricity_value: parseFloat(usage),
+    });
+
+    await fetchEstimates();
+
+    setIsLoading(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="md">
+      <Typography fontWeight="bold" variant="h2" marginBottom={5}>
+        Carbon Calculator
+      </Typography>
+      <Form
+        countries={COUNTRIES}
+        isDisabled={isLoading}
+        onSubmit={handleSubmit}
+      />
+      <EstimatesChart countries={COUNTRIES} estimates={data} />
+    </Container>
   );
 }
 
