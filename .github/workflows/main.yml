@@ -23,7 +23,11 @@ jobs:
         uses: actions/checkout@master
         with:
           persist-credentials: false
-
+      - name: Setup Node and Dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
       - name: Install
         run: yarn install
 
@@ -36,7 +40,11 @@ jobs:
         uses: actions/checkout@master
         with:
           persist-credentials: false
-
+      - name: Setup Node and Restore Dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
       - name: Install
         run: yarn install
 
@@ -52,7 +60,11 @@ jobs:
         uses: actions/checkout@master
         with:
           persist-credentials: false
-
+      - name: Setup Node and Restore Dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
       - name: Install
         run: yarn install
 
