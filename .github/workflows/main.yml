@@ -15,6 +15,21 @@ permissions:
   id-token: write
 
 jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          persist-credentials: false
+
+      - name: Install
+        run: yarn install
+
+      - name: Tests
+        run: yarn test:ci
+
   build-storybook:
     runs-on: ubuntu-latest
 
