@@ -11,7 +11,7 @@ $ REACT_APP_API_TOKEN=<your-token> yarn start
 ```
 
 ## Storybook
-Storybook is used for the purpose of a UI library. A deployed version can be found here.
+Storybook is used for the purpose of a UI library. A deployed version can be [found here](https://cheyer.github.io/carbon-calc/).
 To start storybook simply run:
 
 ```
