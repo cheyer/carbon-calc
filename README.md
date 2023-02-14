@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2c349401-3e46-4452-af0c-09b1afb78ec4/deploy-status)](https://app.netlify.com/sites/distracted-austin-1da3b5/deploys)
+
 Simple application to measure carbon emissions. Just add the electricity usage and see the carbon emissions in the graph.
 
 # Getting started
@@ -7,6 +9,17 @@ First you need to get an API token from [Carbon Interface](https://www.carbonint
 $ yarn
 $ REACT_APP_API_TOKEN=<your-token> yarn start
 ```
+
+## Storybook
+Storybook is used for the purpose of a UI library. A deployed version can be found here.
+To start storybook simply run:
+
+```
+$ yarn storybook
+```
+
+## CI / CD
+Storybook is deployed with Github Pages on every build on the branch `main`.
 
 ## Tests
 This project uses Jest and React Testing Library. A test example for an utility and a React component can be found in the folder `src/tests/`. As a next step integration tests (e.g. using Cypress) could be introduced. To run the tests simply call `yarn test`.
