@@ -3,8 +3,8 @@ import {
   InputLabel,
   MenuItem,
   Select as MuiSelect,
-  SelectChangeEvent,
-} from "@mui/material";
+  SelectChangeEvent
+} from '@mui/material';
 
 export interface OptionInterface {
   name: string;
@@ -19,13 +19,7 @@ interface Props {
   value: string | undefined;
 }
 
-const Select: React.FC<Props> = ({
-  isDisabled,
-  label,
-  onChange,
-  options,
-  value,
-}) => (
+const Select = ({ isDisabled, label, onChange, options, value }: Props) => (
   <FormControl fullWidth>
     <InputLabel id={`${label}-label`}>{label}</InputLabel>
     <MuiSelect
@@ -33,8 +27,7 @@ const Select: React.FC<Props> = ({
       labelId={`${label}-label`}
       value={value}
       label={label}
-      onChange={onChange}
-    >
+      onChange={onChange}>
       {options.map((option) => (
         <MenuItem key={option.value} value={option.value}>
           {option.name}

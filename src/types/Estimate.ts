@@ -1,6 +1,6 @@
-import ElectricityEstimate from "./ElectricityEstimate";
+import ElectricityEstimate from './ElectricityEstimate';
 
-export interface EstimateAttributes extends Omit<ElectricityEstimate, "type"> {
+export interface EstimateAttributes extends Omit<ElectricityEstimate, 'type'> {
   estimated_at: string;
   carbon_g: number;
   carbon_lb: number;
@@ -13,7 +13,7 @@ export interface EstimateAttributes extends Omit<ElectricityEstimate, "type"> {
 interface Estimate {
   data: {
     id: string;
-    type: "estimate";
+    type: 'estimate';
     attributes: EstimateAttributes;
   };
 }
