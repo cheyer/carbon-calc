@@ -1,12 +1,12 @@
-import { SelectChangeEvent, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import { groupBy } from "lodash";
-import { useMemo, useState } from "react";
-import { AxisOptions, Chart } from "react-charts";
-import Country from "../types/Country";
-import Estimate from "../types/Estimate";
-import getCountryName from "../utils/getCountryName";
-import CountryFilter from "./CountryFilter";
+import { SelectChangeEvent, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import { groupBy } from 'lodash';
+import { useMemo, useState } from 'react';
+import { AxisOptions, Chart } from 'react-charts';
+import Country from '../types/Country';
+import Estimate from '../types/Estimate';
+import getCountryName from '../utils/getCountryName';
+import CountryFilter from './CountryFilter';
 
 type Series = {
   data: EstimateData[];
@@ -25,49 +25,41 @@ interface Props {
   estimates: Estimate[];
 }
 
-const getGraphData = (
-  estimates: Estimate[],
-  filterCountry: string
-): Series[] => {
+const getGraphData = (estimates: Estimate[], filterCountry: string): Series[] => {
   const cleanedEstimates = estimates.map((estimate) => ({
     country: estimate.data.attributes.country,
     id: estimate.data.id,
     x: estimate.data.attributes.estimated_at as any,
-    y: estimate.data.attributes.carbon_mt,
+    y: estimate.data.attributes.carbon_mt
   }));
 
-  const groupedByCountry = groupBy(cleanedEstimates, "country");
+  const groupedByCountry = groupBy(cleanedEstimates, 'country');
 
   const chartData = Object.keys(groupedByCountry).map((key) => ({
     label: getCountryName(key),
-    data: groupedByCountry[key],
+    data: groupedByCountry[key]
   }));
 
-  if (filterCountry !== "") {
-    return chartData.filter(
-      (item) => item.label === getCountryName(filterCountry)
-    );
+  if (filterCountry !== '') {
+    return chartData.filter((item) => item.label === getCountryName(filterCountry));
   }
   return chartData;
 };
 
-const EstimatesChart: React.FC<Props> = ({ countries, estimates }) => {
-  const [filterCountry, setFilterCountry] = useState("");
+const EstimatesChart = ({ countries, estimates }: Props) => {
+  const [filterCountry, setFilterCountry] = useState('');
 
   const handleChangeFilterCountry = (event: SelectChangeEvent) =>
     setFilterCountry(event.target.value);
 
-  const handleResetFilterCountry = () => setFilterCountry("");
+  const handleResetFilterCountry = () => setFilterCountry('');
 
-  const data = useMemo(
-    () => getGraphData(estimates, filterCountry),
-    [estimates, filterCountry]
-  );
+  const data = useMemo(() => getGraphData(estimates, filterCountry), [estimates, filterCountry]);
 
   const primaryAxis = useMemo<AxisOptions<EstimateData>>(
     () => ({
       getValue: (item) => new Date(item.x),
-      scaleType: "time",
+      scaleType: 'time'
     }),
     []
   );
@@ -76,9 +68,9 @@ const EstimatesChart: React.FC<Props> = ({ countries, estimates }) => {
     () => [
       {
         getValue: (item) => item.y,
-        elementType: "line",
-        scaleType: "linear",
-      },
+        elementType: 'line',
+        scaleType: 'linear'
+      }
     ],
     []
   );

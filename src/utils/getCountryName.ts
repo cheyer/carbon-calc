@@ -1,4 +1,4 @@
-import { COUNTRIES } from "./constants";
+import { COUNTRIES } from './constants';
 
 const getCountryName = (countryCode: string) => {
   const country = COUNTRIES.find(

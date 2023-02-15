@@ -1,39 +1,26 @@
-import {
-  Box,
-  Button,
-  SelectChangeEvent,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import React, { useState } from "react";
-import Country from "../types/Country";
-import { ElectricityUnitType } from "../types/ElectricityEstimate";
-import { UNITS } from "../utils/constants";
-import Select from "./Select";
+import { Box, Button, SelectChangeEvent, Stack, TextField, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import Country from '../types/Country';
+import { ElectricityUnitType } from '../types/ElectricityEstimate';
+import { UNITS } from '../utils/constants';
+import Select from './Select';
 
 interface Props {
   countries: Country[];
   isDisabled: boolean;
-  onSubmit: (
-    country: string,
-    electricityUnit: ElectricityUnitType,
-    usage: string
-  ) => void;
+  onSubmit: (country: string, electricityUnit: ElectricityUnitType, usage: string) => void;
 }
 
 const Form: React.FC<Props> = ({ countries, isDisabled, onSubmit }) => {
-  const [electricityUnit, setElectricityUnit] =
-    useState<ElectricityUnitType>("mwh");
-  const [country, setCountry] = useState("DE");
-  const [usage, setUsage] = useState("");
+  const [electricityUnit, setElectricityUnit] = useState<ElectricityUnitType>('mwh');
+  const [country, setCountry] = useState('DE');
+  const [usage, setUsage] = useState('');
   const [isNumberInvalid, setIsNumberInvalid] = useState(false);
 
   const handleChangeUnit = (event: SelectChangeEvent) =>
     setElectricityUnit(event.target.value as ElectricityUnitType);
 
-  const handleChangeCountry = (event: SelectChangeEvent) =>
-    setCountry(event.target.value);
+  const handleChangeCountry = (event: SelectChangeEvent) => setCountry(event.target.value);
 
   const handleChangeUsage = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
@@ -47,21 +34,14 @@ const Form: React.FC<Props> = ({ countries, isDisabled, onSubmit }) => {
     setUsage(value);
   };
 
-  const isFormValid = () =>
-    !isNumberInvalid && electricityUnit && usage && country;
+  const isFormValid = () => !isNumberInvalid && electricityUnit && usage && country;
 
   const handleClick = () => onSubmit(country, electricityUnit, usage);
 
   return (
     <Box marginBottom={5}>
-      <Typography marginBottom={4}>
-        Create a new carbon estimate with electricity usage:
-      </Typography>
-      <Stack
-        direction={{ xs: "column", sm: "row" }}
-        spacing={{ xs: 4, sm: 2 }}
-        marginBottom={2}
-      >
+      <Typography marginBottom={4}>Create a new carbon estimate with electricity usage:</Typography>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 4, sm: 2 }} marginBottom={2}>
         <TextField
           label="Electricity Usage"
           variant="outlined"
@@ -71,9 +51,7 @@ const Form: React.FC<Props> = ({ countries, isDisabled, onSubmit }) => {
           fullWidth
           value={usage}
           onChange={handleChangeUsage}
-          helperText={
-            isNumberInvalid ? "Usage must be a positive number!" : undefined
-          }
+          helperText={isNumberInvalid ? 'Usage must be a positive number!' : undefined}
           error={isNumberInvalid}
         />
 
@@ -94,11 +72,7 @@ const Form: React.FC<Props> = ({ countries, isDisabled, onSubmit }) => {
         />
       </Stack>
 
-      <Button
-        variant="contained"
-        onClick={handleClick}
-        disabled={isDisabled || !isFormValid()}
-      >
+      <Button variant="contained" onClick={handleClick} disabled={isDisabled || !isFormValid()}>
         Submit
       </Button>
     </Box>
