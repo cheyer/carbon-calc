@@ -23,8 +23,22 @@ $ yarn storybook
 ```
 
 ## CI / CD
+This repository includes a CI/CD integration realized with Github Actions, which is triggered by pushing on `main` branch or a PR. It runs a set of checks (tests, linting) before building Storybook and finally deploying Storybook. Storybook is deployed with Github Pages on every push on the branch `main`.
 
-Storybook is deployed with Github Pages on every build on the branch `main`.
+The application itself is being deployed automatically by using the [**Netlify integration**](https://app.netlify.com/sites/distracted-austin-1da3b5/overview). In a next step, the CI/CD pipeline could be improved by only triggering a Netlify deploy, once all the checks have passed.
+
+```mermaid
+flowchart LR
+    setup[Setup Dependencies] --> checks
+    subgraph checks
+        direction RL
+        test[Run Tests]
+        linting[Run Linting]
+        build[Build Storybook]
+    end
+    checks --> deploy[Deploy Storybook]
+
+```
 
 ## Tests
 
