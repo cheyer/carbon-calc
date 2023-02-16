@@ -7,10 +7,11 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import InfoPage from '../pages/InfoPage/InfoPage';
 import NotImplementedPage from '../pages/NotImplementedPage/NotImplementedPage';
 import TemplatePage from '../pages/TemplatePage/TemplatePage';
+import routes from './routes';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: routes.index,
     element: (
       <TemplatePage menuConfig={menuConfig} user={mockUser}>
         <Outlet />
@@ -18,27 +19,27 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/',
+        path: routes.index,
         element: <p>general site</p>
       },
       {
-        path: '/add-data',
+        path: routes.addData,
         element: <AddData />
       },
       {
-        path: '/info',
+        path: routes.info,
         element: <InfoPage />
       },
       {
-        path: '/offset',
+        path: routes.offset,
         element: <NotImplementedPage />
       },
       {
-        path: '/browse',
+        path: routes.browse,
         element: <NotImplementedPage />
       },
       {
-        path: '/preferences',
+        path: routes.preferences,
         element: <NotImplementedPage />
       }
     ],
@@ -48,12 +49,6 @@ const router = createBrowserRouter([
 
 function App() {
   return <RouterProvider router={router} />;
-
-  // return (
-  //   <TemplatePage menuConfig={menuConfig} user={mockUser}>
-  //     hello
-  //   </TemplatePage>
-  // );
 }
 
 export default App;

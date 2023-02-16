@@ -41,8 +41,6 @@ function App() {
     setIsLoading(false);
   };
 
-  return <Page />;
-
   return (
     <Container maxWidth="md">
       <Typography fontWeight="bold" variant="h2" marginBottom={5}>

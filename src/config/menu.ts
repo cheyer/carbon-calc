@@ -1,5 +1,6 @@
 import { Cog, Factory, Info, PlusSquare, Table2, Trees } from 'lucide-react';
 import { MenuGroupProps } from '../components/molecules/Menu/Menu';
+import routes from '../app/routes';
 
 export const menuConfig: MenuGroupProps[] = [
   {
@@ -8,12 +9,12 @@ export const menuConfig: MenuGroupProps[] = [
       {
         text: 'Emissions',
         Icon: Factory,
-        to: '/'
+        to: routes.index
       },
       {
         text: 'Offset',
         Icon: Trees,
-        to: '/offset'
+        to: routes.offset
       }
     ]
   },
@@ -23,12 +24,12 @@ export const menuConfig: MenuGroupProps[] = [
       {
         text: 'Add',
         Icon: PlusSquare,
-        to: '/add-data'
+        to: routes.addData
       },
       {
         text: 'Browse',
         Icon: Table2,
-        to: '/browse'
+        to: routes.browse
       }
     ]
   },
@@ -38,12 +39,12 @@ export const menuConfig: MenuGroupProps[] = [
       {
         text: 'Preferences',
         Icon: Cog,
-        to: '/preferences'
+        to: routes.preferences
       },
       {
         text: 'About',
         Icon: Info,
-        to: '/info'
+        to: routes.info
       }
     ]
   }
