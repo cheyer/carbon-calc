@@ -6,11 +6,26 @@ import { Input } from '../../components/atoms/Input/Input';
 import Select from '../../components/atoms/Select/Select';
 import { ElectricityUnitType } from '../../types/ElectricityEstimate';
 import { COUNTRIES, UNITS } from '../../utils/constants';
+import { createEstimate } from '../../utils/backendService';
 
 const AddDataPage = () => {
   const [isDisabled, setIsDisabled] = useState(false);
+  const [usage, setUsage] = useState('');
   const [electricityUnit, setElectricityUnit] = useState<ElectricityUnitType>('mwh');
   const [country, setCountry] = useState('DE');
+  const [isNumberInvalid, setIsNumberInvalid] = useState(false);
+
+  const handleChangeUsage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.currentTarget;
+    const parsedValue = parseFloat(value);
+
+    if (parsedValue <= 0) {
+      setIsNumberInvalid(true);
+    } else {
+      setIsNumberInvalid(false);
+    }
+    setUsage(value);
+  };
 
   const handleChangeUnit = (event: ChangeEvent<HTMLSelectElement>) =>
     setElectricityUnit(event.target.value as ElectricityUnitType);
@@ -18,7 +33,26 @@ const AddDataPage = () => {
   const handleChangeCountry = (event: ChangeEvent<HTMLSelectElement>) =>
     setCountry(event.target.value);
 
-  const handleSubmit = () => setIsDisabled(true);
+  const isFormValid = () => !isNumberInvalid && electricityUnit && usage && country;
+
+  const handleClick = () => handleSubmit(country, electricityUnit, usage);
+
+  const handleSubmit = async (
+    country: string,
+    electricityUnit: ElectricityUnitType,
+    usage: string
+  ) => {
+    setIsDisabled(true);
+
+    await createEstimate({
+      type: 'electricity',
+      country,
+      electricity_unit: electricityUnit,
+      electricity_value: parseFloat(usage)
+    });
+    setUsage('');
+    setIsDisabled(false);
+  };
 
   return (
     <div>
@@ -33,6 +67,9 @@ const AddDataPage = () => {
         className="mb-4"
         disabled={isDisabled}
         type="number"
+        value={usage}
+        onChange={handleChangeUsage}
+        error={isNumberInvalid ? 'Number must be positive' : undefined}
       />
       <Select
         value={country}
@@ -50,7 +87,7 @@ const AddDataPage = () => {
         className="mb-4"
         disabled={isDisabled}
       />
-      <Button onClick={handleSubmit} disabled={isDisabled}>
+      <Button onClick={handleClick} disabled={isDisabled || !isFormValid()}>
         {isDisabled ? 'Loading...' : 'Submit'}
       </Button>
     </div>

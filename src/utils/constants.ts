@@ -1,4 +1,4 @@
-import { OptionInterface } from '../components/Select';
+import { OptionInterface } from '../components/atoms/Select/Select';
 import Country from '../types/Country';
 
 export const API = 'https://www.carboninterface.com/api/v1/';

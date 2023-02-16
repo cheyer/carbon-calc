@@ -52,7 +52,6 @@ This project uses Jest and React Testing Library. A test example for an utility 
 ## Technologies Used
 
 - [Create React App](https://create-react-app.dev/docs/getting-started#creating-a-typescript-app) (Typescript template)
-- [Material UI](https://mui.com/) for basic components and styles
 - [Axios](https://axios-http.com/) for easier request handling
 - [Lodash](https://lodash.com/) for group by function
 - [React Charts](https://react-charts.tanstack.com/) for the graph. Sidenote: Here I'm using the beta version (>3.0.0) as this is not production code and I wanted to try something new.
@@ -62,3 +61,13 @@ As the form is really simple no form library was used, instead simply the compon
 ## Notes
 
 The list of countries in `src/utils/constants.ts` were taken from the [documentation](https://www.notion.so/4b4f41db73254b4b915ba01d55eba7e7?v=4ad0efe7763540ab801fadd9f3bf1ce0).
+
+## Further Improvements
+
+Since this is just a demo and there is limited time, further things can be introduced / improved:
+
+- End to end test (using e.g. Cypress)
+- Visual regression tests (using e.g. Loki)
+- i18n
+- adding more test, and applying a test coverage treshold
+- migrating from Create React App to Next.js

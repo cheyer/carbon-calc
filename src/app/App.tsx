@@ -3,6 +3,7 @@ import { menuConfig } from '../config/menu';
 import '../global.css';
 import { mockUser } from '../mock/mockData';
 import AddData from '../pages/AddDataPage/AddDataPage';
+import ChartPage from '../pages/ChartPage/ChartPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import InfoPage from '../pages/InfoPage/InfoPage';
 import NotImplementedPage from '../pages/NotImplementedPage/NotImplementedPage';
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: routes.index,
-        element: <p>general site</p>
+        element: <ChartPage />
       },
       {
         path: routes.addData,

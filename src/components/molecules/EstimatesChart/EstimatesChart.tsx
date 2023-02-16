@@ -1,12 +1,9 @@
-import { SelectChangeEvent, Typography } from '@mui/material';
-import { Box } from '@mui/system';
 import { groupBy } from 'lodash';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { AxisOptions, Chart } from 'react-charts';
-import Country from '../types/Country';
-import Estimate from '../types/Estimate';
-import getCountryName from '../utils/getCountryName';
-import CountryFilter from './CountryFilter';
+import Estimate from '../../../types/Estimate';
+import getCountryName from '../../../utils/getCountryName';
+import NoDataContainer from '../NoDataContainer/NoDataContainer';
 
 type Series = {
   data: EstimateData[];
@@ -21,8 +18,10 @@ interface EstimateData {
 }
 
 interface Props {
-  countries: Country[];
+  filterCountry: string;
   estimates: Estimate[];
+  onReset: () => void;
+  onAddData: () => void;
 }
 
 const getGraphData = (estimates: Estimate[], filterCountry: string): Series[] => {
@@ -47,14 +46,7 @@ const getGraphData = (estimates: Estimate[], filterCountry: string): Series[] =>
   return chartData;
 };
 
-const EstimatesChart = ({ countries, estimates }: Props) => {
-  const [filterCountry, setFilterCountry] = useState('');
-
-  const handleChangeFilterCountry = (event: SelectChangeEvent) =>
-    setFilterCountry(event.target.value);
-
-  const handleResetFilterCountry = () => setFilterCountry('');
-
+const EstimatesChart = ({ filterCountry, estimates, onReset, onAddData }: Props) => {
   const data = useMemo(() => getGraphData(estimates, filterCountry), [estimates, filterCountry]);
 
   const primaryAxis = useMemo<AxisOptions<EstimateData>>(
@@ -75,21 +67,14 @@ const EstimatesChart = ({ countries, estimates }: Props) => {
     ],
     []
   );
-
+  console.log({ data });
   return (
-    <div>
-      <Typography variant="h3">Chart</Typography>
-      <Box py={2}>
-        <CountryFilter
-          countries={countries}
-          filterCountry={filterCountry}
-          onChangeFilterCountry={handleChangeFilterCountry}
-          onReset={handleResetFilterCountry}
-        />
-      </Box>
-      <div style={{ height: 300 }}>
+    <div className="h-80">
+      {data.length > 0 ? (
         <Chart options={{ data, primaryAxis, secondaryAxes }} />
-      </div>
+      ) : (
+        <NoDataContainer onReset={onReset} onAddData={onAddData} />
+      )}
     </div>
   );
 };
