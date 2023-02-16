@@ -1,6 +1,6 @@
-baeldung ios course?
-
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2c349401-3e46-4452-af0c-09b1afb78ec4/deploy-status)](https://app.netlify.com/sites/distracted-austin-1da3b5/deploys)
+
+![Build and deploy](https://github.com/cheyer/carbon-calc/actions/workflows/main.yml/badge.svg)
 
 Simple application to measure carbon emissions. Just add the electricity usage and see the carbon emissions in the graph.
 
@@ -22,7 +22,12 @@ To start storybook simply run:
 $ yarn storybook
 ```
 
+## Dependabot
+
+This project uses Dependabot for automatically updating dependencies. However, auto merge is not (yet) enabled.
+
 ## CI / CD
+
 This repository includes a CI/CD integration realized with Github Actions, which is triggered by pushing on `main` branch or a PR. It runs a set of checks (tests, linting) before building Storybook and finally deploying Storybook. Storybook is deployed with Github Pages on every push on the branch `main`.
 
 The application itself is being deployed automatically by using the [**Netlify integration**](https://app.netlify.com/sites/distracted-austin-1da3b5/overview). In a next step, the CI/CD pipeline could be improved by only triggering a Netlify deploy, once all the checks have passed.
