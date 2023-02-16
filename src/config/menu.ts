@@ -8,11 +8,12 @@ export const menuConfig: MenuGroupProps[] = [
       {
         text: 'Emissions',
         Icon: Factory,
-        selected: true
+        to: '/'
       },
       {
         text: 'Offset',
-        Icon: Trees
+        Icon: Trees,
+        to: '/offset'
       }
     ]
   },
@@ -21,11 +22,13 @@ export const menuConfig: MenuGroupProps[] = [
     menuButtons: [
       {
         text: 'Add',
-        Icon: PlusSquare
+        Icon: PlusSquare,
+        to: '/add-data'
       },
       {
         text: 'Browse',
-        Icon: Table2
+        Icon: Table2,
+        to: '/browse'
       }
     ]
   },
@@ -34,11 +37,13 @@ export const menuConfig: MenuGroupProps[] = [
     menuButtons: [
       {
         text: 'Preferences',
-        Icon: Cog
+        Icon: Cog,
+        to: '/preferences'
       },
       {
         text: 'About',
-        Icon: Info
+        Icon: Info,
+        to: '/info'
       }
     ]
   }

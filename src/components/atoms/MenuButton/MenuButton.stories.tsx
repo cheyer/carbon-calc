@@ -16,4 +16,4 @@ export const WithIcon = Template.bind({});
 WithIcon.args = { text: 'Click Me', Icon: PlayCircle };
 
 export const Selected = Template.bind({});
-Selected.args = { text: 'Click Me - I am selected', selected: true };
+Selected.args = { text: 'Click Me - I am selected' };

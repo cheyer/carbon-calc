@@ -1,21 +1,24 @@
 import { CircleSlashed, Library, ListMusic, Music2, PlayCircle, Radio } from 'lucide-react';
+import { MenuGroupProps } from '../components/molecules/Menu/Menu';
 
-export const mockMenuGroup = [
+export const mockMenuGroup: MenuGroupProps[] = [
   {
     label: 'Discover',
     menuButtons: [
       {
         text: 'Listen Now',
         Icon: PlayCircle,
-        selected: true
+        to: '/'
       },
       {
         text: 'Browse',
-        Icon: CircleSlashed
+        Icon: CircleSlashed,
+        to: '/'
       },
       {
         text: 'Radio',
-        Icon: Radio
+        Icon: Radio,
+        to: '/'
       }
     ]
   },
@@ -24,15 +27,18 @@ export const mockMenuGroup = [
     menuButtons: [
       {
         text: 'Playlist',
-        Icon: ListMusic
+        Icon: ListMusic,
+        to: '/'
       },
       {
         text: 'Songs',
-        Icon: Music2
+        Icon: Music2,
+        to: '/'
       },
       {
         text: 'Albums',
-        Icon: Library
+        Icon: Library,
+        to: '/'
       }
     ]
   }

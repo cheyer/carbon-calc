@@ -14,5 +14,5 @@ export const Primary = Template.bind({});
 Primary.args = {
   menuConfig: menuConfig,
   user: mockUser,
-  content: <p>Some Content</p>
+  children: <p>Some Content</p>
 };

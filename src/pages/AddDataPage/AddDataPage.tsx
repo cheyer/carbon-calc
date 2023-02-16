@@ -1,7 +1,7 @@
 import Divider from '../../components/atoms/Divider/Divider';
 import Headline from '../../components/atoms/Headline/Headline';
 
-const AddData = () => {
+const AddDataPage = () => {
   return (
     <div>
       <Headline
@@ -13,4 +13,4 @@ const AddData = () => {
   );
 };
 
-export default AddData;
+export default AddDataPage;
