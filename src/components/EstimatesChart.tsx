@@ -29,6 +29,7 @@ const getGraphData = (estimates: Estimate[], filterCountry: string): Series[] =>
   const cleanedEstimates = estimates.map((estimate) => ({
     country: estimate.data.attributes.country,
     id: estimate.data.id,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     x: estimate.data.attributes.estimated_at as any,
     y: estimate.data.attributes.carbon_mt
   }));

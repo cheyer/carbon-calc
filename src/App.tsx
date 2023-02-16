@@ -6,6 +6,8 @@ import { ElectricityUnitType } from './types/ElectricityEstimate';
 import Estimate from './types/Estimate';
 import { createEstimate, getEstimates } from './utils/backendService';
 import { COUNTRIES } from './utils/constants';
+import Page from './pages';
+import './global.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +40,8 @@ function App() {
 
     setIsLoading(false);
   };
+
+  return <Page />;
 
   return (
     <Container maxWidth="md">
