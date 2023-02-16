@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { mockMenuGroup } from '../../../mock/menuData';
+import { mockMenuGroup } from '../../../mock/mockData';
 import Menu from './Menu';
 
 export default {

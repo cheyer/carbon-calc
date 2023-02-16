@@ -1,6 +1,6 @@
 import MenuButton, { MenuButtonProps } from '../../atoms/MenuButton/MenuButton';
 
-interface MenuGroupProps {
+export interface MenuGroupProps {
   label: string;
   menuButtons: MenuButtonProps[];
 }

@@ -1,53 +1,22 @@
-import { Cog, Factory, Info, PlusSquare, Table2, Trees } from 'lucide-react';
+import { AvatarProps } from '../../components/atoms/Avatar/Avatar';
+import { MenuGroupProps } from '../../components/molecules/Menu/Menu';
 import Sidebar from '../../components/molecules/Sidebar/Sidebar';
+import TopBar from '../../components/molecules/TopBar/TopBar';
 
-const menuGroup = [
-  {
-    label: 'Discover',
-    menuButtons: [
-      {
-        text: 'Emissions',
-        Icon: Factory,
-        selected: true
-      },
-      {
-        text: 'Offset',
-        Icon: Trees
-      }
-    ]
-  },
-  {
-    label: 'Data',
-    menuButtons: [
-      {
-        text: 'Add',
-        Icon: PlusSquare
-      },
-      {
-        text: 'Browse',
-        Icon: Table2
-      }
-    ]
-  },
-  {
-    label: 'Settings',
-    menuButtons: [
-      {
-        text: 'Preferences',
-        Icon: Cog
-      },
-      {
-        text: 'About',
-        Icon: Info
-      }
-    ]
-  }
-];
+interface Props {
+  content: JSX.Element;
+  user: AvatarProps;
+  menuConfig: MenuGroupProps[];
+}
 
-const TemplatePage = () => (
-  <div>
+const TemplatePage = ({ content, menuConfig, user }: Props) => (
+  <div className="flex items-start">
     <div className="max-w-xs h-screen border-r border-r-slate-200 dark:border-r-slate-700">
-      <Sidebar menuGroup={menuGroup} />
+      <Sidebar menuGroup={menuConfig} />
+    </div>
+    <div className="flex-grow">
+      <TopBar user={user} />
+      <div>{content}</div>
     </div>
   </div>
 );

@@ -37,3 +37,5 @@ export const mockMenuGroup = [
     ]
   }
 ];
+
+export const mockUser = { firstName: 'Chris', lastName: 'Heyer' };
