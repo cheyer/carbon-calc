@@ -12,7 +12,7 @@ interface Props {
 
 const TemplatePage = ({ children, menuConfig, user }: Props) => (
   <div className="flex items-start">
-    <div className="max-w-xs h-screen border-r border-r-slate-200 dark:border-r-slate-700">
+    <div className="flex-shrink-0 max-w-xs h-screen border-r border-r-slate-200 dark:border-r-slate-700">
       <Sidebar menuGroup={menuConfig} />
     </div>
     <div className="flex-grow">

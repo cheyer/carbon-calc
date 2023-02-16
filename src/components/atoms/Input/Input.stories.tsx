@@ -12,3 +12,6 @@ export const Primary = Template.bind({});
 
 export const WithLabel = Template.bind({});
 WithLabel.args = { label: 'Some Label' };
+
+export const WithError = Template.bind({});
+WithError.args = { error: 'Some Error' };
