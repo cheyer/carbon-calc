@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import AddData from './AddData';
+import AddData from './AddDataPage';
 
 export default {
   title: 'Pages/AddData',
