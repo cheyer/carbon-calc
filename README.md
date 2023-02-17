@@ -49,11 +49,31 @@ flowchart LR
 
 This project uses Jest and React Testing Library. A test example for an utility and a React component can be found in the folder `src/tests/`. As a next step integration tests (e.g. using Cypress) could be introduced. To run the tests simply call `yarn test`.
 
+## Structure
+
+The app is structured as following inside the `src` folder:
+
+```
+├── app (basic app and routing)
+├── components (UI components)
+│   ├── atoms (simple basic components)
+│   └── molecules (more complex components consisting of atoms)
+├── config (for basic config)
+├── mock (for mocks used in test/stories)
+├── pages (pages that combine UI components with business logic)
+│   ├── <*Page> (Specific page which is rendered inside TemplatePage)
+│   └── TemplatePage (Root/Wrapping page structure in which each page is being rendered into)
+├── tests (for tests)
+├── types (for types)
+└──utils (for utility functions)
+```
+
 ## Technologies Used
 
 - [Create React App](https://create-react-app.dev/docs/getting-started#creating-a-typescript-app) (Typescript template)
 - [Axios](https://axios-http.com/) for easier request handling
 - [Lodash](https://lodash.com/) for group by function
+- [TailwindCSS](https://tailwindcss.com/) for styling the app
 - [React Charts](https://react-charts.tanstack.com/) for the graph. Sidenote: Here I'm using the beta version (>3.0.0) as this is not production code and I wanted to try something new.
 
 As the form is really simple no form library was used, instead simply the component's state is used. Also the application itself only uses React Hooks for state, as the example does not require any sophisticated state solution.
