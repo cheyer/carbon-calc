@@ -2,7 +2,14 @@
 
 ![Build and deploy](https://github.com/cheyer/carbon-calc/actions/workflows/main.yml/badge.svg)
 
-Simple application to measure carbon emissions. Just add the electricity usage and see the carbon emissions in the graph.
+**Deployed Links**
+- [Storybook](https://cheyer.github.io/carbon-calc/)
+- [App](https://distracted-austin-1da3b5.netlify.app/)
+
+> Simple application to measure carbon emissions. Just add the electricity usage and see the carbon emissions in the graph.
+
+<img width="1335" alt="Screenshot 2023-02-17 at 11 05 41" src="https://user-images.githubusercontent.com/7509765/219614703-16cd65f3-fff9-4b28-b9b3-84cc6382d81a.png">
+
 
 # Getting started
 
