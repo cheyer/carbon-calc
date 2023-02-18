@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "-": "^0.0.1",
-    "@emotion/react": "^11.10.5",
+    "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
