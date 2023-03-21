@@ -7140,7 +7140,7 @@ __metadata:
     eslint-config-prettier: ^8.6.0
     eslint-plugin-prettier: ^4.2.1
     lodash: ^4.17.21
-    lucide-react: ^0.114.0
+    lucide-react: ^0.127.0
     prettier: ^2.8.4
     prop-types: ^15.8.1
     react: ^18.2.0
@@ -13476,12 +13476,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.114.0":
-  version: 0.114.0
-  resolution: "lucide-react@npm:0.114.0"
+"lucide-react@npm:^0.127.0":
+  version: 0.127.0
+  resolution: "lucide-react@npm:0.127.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0
-  checksum: 70692f546819b0714b84f201bfd22f63a0e79f95f513edfd083d5642c02ab4b004142163df29042523272e28352a765c48fafc98691959625756fa4812839866
+  checksum: 1450ef92ebd6b95651565bb39ed194a68f690fb01a64de89f8d7ad8f1202e1873fd7d98660f086f0ed326716ce772f65217547dfb03abd97e4a6f8cf20f8a0f2
   languageName: node
   linkType: hard
 
